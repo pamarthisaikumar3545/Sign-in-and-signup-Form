@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add styles for the popup */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .popup-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .popup-content h2 {
+      margin: 0;
+    }
+
+    .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .error-message, .signUpErrorMessage {
+      color: red;
+      display: none;
+      margin-top: 10px;
+    }
+
+    /* Style for the forgot password modal */
+    #forgotPasswordModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content input {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .modal-content button {
+      background-color: #4deeea;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #45b8c5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sign In Form -->
+    <div class="form-container sign-in-container">
+      <form id="signInForm">
+        <h1>Sign In</h1>
+        <div class="social-container">
+          <a href="https://www.facebook.com/login" class="social" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://accounts.google.com/ServiceLogin" class="social" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+          <a href="https://www.linkedin.com/login" class="social" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="email" id="signInEmail" placeholder="Email" required>
+        <input type="password" id="signInPassword" placeholder="Password" required>
+        <a href="#" id="forgotPasswordLink">Forgot your password?</a>
+        <button type="submit">SIGN IN</button>
+        <p id="signInErrorMessage" class="error-message">Please fill in all details.</p>
+      </form>
+    </div>
+    
+    <!-- Sign Up Form -->
+    <div class="form-container sign-up-container">
+      <form id="signUpForm">
+        <h1>Create Account</h1>
+        <div class="social-container">
+          <a href="https://www.facebook.com/login" class="social" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://accounts.google.com/ServiceLogin" class="social" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+          <a href="https://www.linkedin.com/login" class="social" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" id="signUpName" placeholder="Name" required>
+        <input type="email" id="signUpEmail" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="date" id="dob" placeholder="Date of Birth" required>
+        <button type="submit">SIGN UP</button>
+        <p id="error-message" class="error-message">Password must contain at least one uppercase letter, one lowercase letter, and one number.</p>
+        <p id="signUpErrorMessage" class="error-message">Please fill in all details.</p>
+      </form>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Hello, User!</h1>
+          <p>If you already have an account, please sign in.</p>
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Welcome!</h1>
+          <p>If you don't have an account, please sign up.</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div id="forgotPasswordModal" class="popup">
+    <div class="modal-content">
+      <span class="close-button" id="closeForgotPasswordModal">&times;</span>
+      <h2>Forgot Your Password?</h2>
+      <input type="email" id="forgotPasswordEmail" placeholder="Enter your email">
+      <button id="sendResetLink">Send Reset Link</button>
+      <p id="resetMessage" class="error-message" style="display:none;">Your password reset link has been sent to your email.</p>
+    </div>
+  </div>
+  </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
+  
